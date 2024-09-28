@@ -1,23 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie and Series Tracker</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch and Comment on Movies</title>
+  <style>
+    .comment-section {
+      margin-top: 20px;
+    }
+    .comments {
+      list-style: none;
+      padding: 0;
+    }
+    .comments li {
+      margin-bottom: 10px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Movie and Series Tracker</h1>
+  <h1>Watch and Download the Movie</h1>
 
-        <form id="movieForm">
-            <input type="text" id="title" placeholder="Enter movie or series title" required>
-            <button type="submit">Add</button>
-        </form>
+  <!-- Reproducir la película -->
+  <h2>Watch the Movie</h2>
+  <video width="600" controls>
+    <source src="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-        <ul id="movieList"></ul>
-    </div>
+  <!-- Descargar la película -->
+  <h2>Download the Movie</h2>
+  <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" download>Download Movie</a>
 
-    <script src="script.js"></script>
+  <!-- Sección de comentarios -->
+  <div class="comment-section">
+    <h2>Comments</h2>
+    <ul class="comments" id="commentsList"></ul>
+    <textarea id="commentInput" rows="4" placeholder="Write a comment..."></textarea><br><br>
+    <button onclick="addComment()">Add Comment</button>
+  </div>
+
+  <script>
+    function addComment() {
+      const commentInput = document.getElementById('commentInput');
+      const commentText = commentInput.value.trim();
+
+      if (commentText !== '') {
+        const commentList = document.getElementById('commentsList');
+        const newComment = document.createElement('li');
+        newComment.textContent = commentText;
+        commentList.appendChild(newComment);
+
+        // Clear the input field
+        commentInput.value = '';
+      }
+    }
+  </script>
+
 </body>
 </html>
